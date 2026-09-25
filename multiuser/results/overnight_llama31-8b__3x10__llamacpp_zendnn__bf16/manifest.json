@@ -1,0 +1,39 @@
+{
+  "config_name": "overnight_llama31-8b__3x10__llamacpp_zendnn__bf16",
+  "backend": "llamacpp",
+  "host": "192.168.6.10",
+  "pod": "turin-xcovoid0023-pod-3",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 3,
+  "cores_per_instance": 10,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:37:50",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "96-105",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 26062
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "106-115",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 26065
+    },
+    {
+      "idx": 2,
+      "port": 8082,
+      "cores": "116-125",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 26068
+    }
+  ]
+}

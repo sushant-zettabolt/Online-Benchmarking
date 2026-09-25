@@ -1,0 +1,9 @@
+[2026-09-25 06:36:08] [worker:turin-xcovoid0023-pod-2] worker starting, slot=3, control_pod=turin-xcovoid0021-pod-5
+[2026-09-25 06:36:09] [worker:turin-xcovoid0023-pod-2] starting job llama31-8b__2x16__vllm_nozentorch__bf16 (mode=multiuser layout=2x16 vllm/nozentorch/bf16)
+[06:36:09] [llama31-8b__2x16__vllm_nozentorch__bf16] infer pod turin-xcovoid0023-pod-2 -> numa=2 cores=64-95
+[06:36:09] [llama31-8b__2x16__vllm_nozentorch__bf16] staging model on turin-xcovoid0023-pod-2 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/hf/Llama-3.1-8B-Instruct -> /tmp/models/Llama-3.1-8B-Instruct
+Terminated
+cp: cannot create regular file '/tmp/models/Llama-3.1-8B-Instruct.part/original/params.json': No such file or directory
+cp: cannot create regular file '/tmp/models/Llama-3.1-8B-Instruct.part/original/tokenizer.model': No such file or directory
+command terminated with exit code 143

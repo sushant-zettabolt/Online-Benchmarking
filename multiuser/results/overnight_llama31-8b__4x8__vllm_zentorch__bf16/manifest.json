@@ -1,0 +1,47 @@
+{
+  "config_name": "overnight_llama31-8b__4x8__vllm_zentorch__bf16",
+  "backend": "vllm",
+  "host": "192.168.13.20",
+  "pod": "turin-xcovoid0021-pod-6",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 4,
+  "cores_per_instance": 8,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:41:59",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "192-199",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2589878
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "200-207",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2589881
+    },
+    {
+      "idx": 2,
+      "port": 8002,
+      "cores": "208-215",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2589884
+    },
+    {
+      "idx": 3,
+      "port": 8003,
+      "cores": "216-223",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2589887
+    }
+  ]
+}

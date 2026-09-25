@@ -1,0 +1,9 @@
+[2026-09-25 06:40:25] [dispatcher] queue.tsv already exists, resuming (29 pending, 5 running left over)
+[2026-09-25 06:40:25] [dispatcher] control pod (from prior run): turin-xcovoid0021-pod-5
+[2026-09-25 06:40:25] [dispatcher] initial pod discovery...
+d (from prior run): turin-xcovoid0021-pod-5
+[2026-09-25 06:40:25] [dispatcher] initial pod discovery...
+[2026-09-25 06:40:43] [dispatcher] initial workers launched: 6 inference pod(s)
+[2026-09-25 06:40:43] [dispatcher] initial workers launched: 6 inference pod(s)
+[2026-09-25 06:40:43] [dispatcher] status: 8 done, 0 failed, 0 running, 34 pending; 6 inference pod(s) active; 46156s to cutoff
+[2026-09-25 06:40:43] [dispatcher] status: 8 done, 0 failed, 0 running, 34 pending; 6 inference pod(s) active; 46156s to cutoff

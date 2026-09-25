@@ -1,0 +1,43 @@
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.13.20:8080",
+  "model": "default",
+  "pp": 768,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 1.7319881338626146,
+      "prompt_n": 768,
+      "prompt_ms": 1730.815,
+      "prompt_per_second": 443.7215993621502,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.730815
+    },
+    {
+      "client_wall_s": 1.760261578951031,
+      "prompt_n": 768,
+      "prompt_ms": 1759.14,
+      "prompt_per_second": 436.5769637436474,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.7591400000000001
+    },
+    {
+      "client_wall_s": 1.7569579710252583,
+      "prompt_n": 768,
+      "prompt_ms": 1755.812,
+      "prompt_per_second": 437.4044601586047,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.755812
+    }
+  ],
+  "mean_ttft_s": 1.748589,
+  "tok_s": 439.21127263181916
+}

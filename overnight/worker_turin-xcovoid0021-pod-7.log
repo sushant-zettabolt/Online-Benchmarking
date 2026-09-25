@@ -1,0 +1,373 @@
+[2026-09-25 06:36:08] [worker:turin-xcovoid0021-pod-7] worker starting, slot=1, control_pod=turin-xcovoid0021-pod-5
+[2026-09-25 06:36:08] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__2x16__llamacpp_zendnn__bf16 (mode=multiuser layout=2x16 llamacpp/zendnn/bf16)
+[06:36:09] [llama31-8b__2x16__llamacpp_zendnn__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:36:09] [llama31-8b__2x16__llamacpp_zendnn__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/gguf/Llama-3.1-8B-Instruct-BF16.gguf -> /tmp/models/Llama-3.1-8B-Instruct-BF16.gguf
+[06:36:11] [llama31-8b__2x16__llamacpp_zendnn__bf16] starting resource monitor (before phase)...
+[06:36:31] [llama31-8b__2x16__llamacpp_zendnn__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16.conf
+[06:36:32] [llama31-8b__2x16__llamacpp_zendnn__bf16] starting servers on turin-xcovoid0021-pod-7 (overnight_llama31-8b__2x16__llamacpp_zendnn__bf16)...
+config          : overnight_llama31-8b__2x16__llamacpp_zendnn__bf16
+backend         : llamacpp
+instances       : 2 x 16 cores
+core span       : 224-255   (pod pool: 0-255)
+numa node       : 7
+ports           : 8080-8081
+
+launching inst0: cores 224-239  port 8080  weight 16
+launching inst1: cores 240-255  port 8081  weight 16
+
+waiting up to 900s for all 2 instance(s) to become healthy...
+  inst0 (port 8080, cores 224-239) ready after 3s
+  inst1 (port 8081, cores 240-255) ready after 3s
+{
+  "config_name": "overnight_llama31-8b__2x16__llamacpp_zendnn__bf16",
+  "backend": "llamacpp",
+  "host": "192.168.13.21",
+  "pod": "turin-xcovoid0021-pod-7",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 2,
+  "cores_per_instance": 16,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:36:35",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "224-239",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 2412608
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "240-255",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 2412611
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:36:36] [llama31-8b__2x16__llamacpp_zendnn__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9010 stats=9011)...
+backends (2):
+  inst0  192.168.13.21:8080  cores  224-239  weight  16  -> 50.0% of traffic
+  inst1  192.168.13.21:8081  cores  240-255  weight  16  -> 50.0% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3805974) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3805974) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3805974) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3805974) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__llamacpp_zendnn__bf16/lb/haproxy.cfg
+[ALERT]    (3805974) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9010 -- run ./start_haproxy.sh overnight_llama31-8b__2x16__llamacpp_zendnn__bf16 first
+[06:37:01] [llama31-8b__2x16__llamacpp_zendnn__bf16] done, status=OK 
+[2026-09-25 06:37:01] [worker:turin-xcovoid0021-pod-7] job llama31-8b__2x16__llamacpp_zendnn__bf16 DONE
+[2026-09-25 06:37:02] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__3x10__vllm_nozentorch__bf16 (mode=multiuser layout=3x10 vllm/nozentorch/bf16)
+[06:37:02] [llama31-8b__3x10__vllm_nozentorch__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:37:02] [llama31-8b__3x10__vllm_nozentorch__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/hf/Llama-3.1-8B-Instruct -> /tmp/models/Llama-3.1-8B-Instruct
+[06:37:07] [llama31-8b__3x10__vllm_nozentorch__bf16] starting resource monitor (before phase)...
+[06:37:27] [llama31-8b__3x10__vllm_nozentorch__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__3x10__vllm_nozentorch__bf16.conf
+[06:37:27] [llama31-8b__3x10__vllm_nozentorch__bf16] starting servers on turin-xcovoid0021-pod-7 (overnight_llama31-8b__3x10__vllm_nozentorch__bf16)...
+config          : overnight_llama31-8b__3x10__vllm_nozentorch__bf16
+backend         : vllm
+instances       : 3 x 10 cores
+core span       : 224-253   (pod pool: 0-255)
+numa node       : 7
+ports           : 8000-8002
+
+launching inst0: cores 224-233  port 8000  weight 10
+launching inst1: cores 234-243  port 8001  weight 10
+launching inst2: cores 244-253  port 8002  weight 10
+
+waiting up to 900s for all 3 instance(s) to become healthy...
+  inst0 (port 8000, cores 224-233) ready after 136s
+  inst1 (port 8001, cores 234-243) ready after 136s
+  inst2 (port 8002, cores 244-253) ready after 136s
+{
+  "config_name": "overnight_llama31-8b__3x10__vllm_nozentorch__bf16",
+  "backend": "vllm",
+  "host": "192.168.13.21",
+  "pod": "turin-xcovoid0021-pod-7",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 3,
+  "cores_per_instance": 10,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:39:44",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "224-233",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 2414359
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "234-243",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 2414362
+    },
+    {
+      "idx": 2,
+      "port": 8002,
+      "cores": "244-253",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 2414365
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__3x10__vllm_nozentorch__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:39:44] [llama31-8b__3x10__vllm_nozentorch__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9010 stats=9011)...
+backends (3):
+  inst0  192.168.13.21:8000  cores  224-233  weight  10  -> 33.3% of traffic
+  inst1  192.168.13.21:8001  cores  234-243  weight  10  -> 33.3% of traffic
+  inst2  192.168.13.21:8002  cores  244-253  weight  10  -> 33.3% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3806493) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3806493) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3806493) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__3x10__vllm_nozentorch__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__3x10__vllm_nozentorch__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__3x10__vllm_nozentorch__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3806493) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__3x10__vllm_nozentorch__bf16/lb/haproxy.cfg
+[ALERT]    (3806493) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9010 -- run ./start_haproxy.sh overnight_llama31-8b__3x10__vllm_nozentorch__bf16 first
+[06:40:11] [llama31-8b__3x10__vllm_nozentorch__bf16] done, status=OK 
+[2026-09-25 06:40:11] [worker:turin-xcovoid0021-pod-7] job llama31-8b__3x10__vllm_nozentorch__bf16 DONE
+[2026-09-25 06:40:11] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__8x4__llamacpp_zendnn__bf16 (mode=multiuser layout=8x4 llamacpp/zendnn/bf16)
+[06:40:11] [llama31-8b__8x4__llamacpp_zendnn__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:40:11] [llama31-8b__8x4__llamacpp_zendnn__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+already staged
+[06:40:11] [llama31-8b__8x4__llamacpp_zendnn__bf16] starting resource monitor (before phase)...
+[06:40:32] [llama31-8b__8x4__llamacpp_zendnn__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16.conf
+[06:40:32] [llama31-8b__8x4__llamacpp_zendnn__bf16] starting servers on turin-xcovoid0021-pod-7 (overnight_llama31-8b__8x4__llamacpp_zendnn__bf16)...
+config          : overnight_llama31-8b__8x4__llamacpp_zendnn__bf16
+backend         : llamacpp
+instances       : 8 x 4 cores
+core span       : 224-255   (pod pool: 0-255)
+numa node       : 7
+ports           : 8080-8087
+
+launching inst0: cores 224-227  port 8080  weight 4
+launching inst1: cores 228-231  port 8081  weight 4
+launching inst2: cores 232-235  port 8082  weight 4
+launching inst3: cores 236-239  port 8083  weight 4
+launching inst4: cores 240-243  port 8084  weight 4
+launching inst5: cores 244-247  port 8085  weight 4
+launching inst6: cores 248-251  port 8086  weight 4
+launching inst7: cores 252-255  port 8087  weight 4
+
+waiting up to 900s for all 8 instance(s) to become healthy...
+  inst0 (port 8080, cores 224-227) ready after 6s
+  inst1 (port 8081, cores 228-231) ready after 6s
+  inst2 (port 8082, cores 232-235) ready after 7s
+  inst3 (port 8083, cores 236-239) ready after 7s
+  inst4 (port 8084, cores 240-243) ready after 7s
+  inst5 (port 8085, cores 244-247) ready after 7s
+  inst6 (port 8086, cores 248-251) ready after 7s
+  inst7 (port 8087, cores 252-255) ready after 7s
+{
+  "config_name": "overnight_llama31-8b__8x4__llamacpp_zendnn__bf16",
+  "backend": "llamacpp",
+  "host": "192.168.13.21",
+  "pod": "turin-xcovoid0021-pod-7",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 8,
+  "cores_per_instance": 4,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:40:39",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "224-227",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419380
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "228-231",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419385
+    },
+    {
+      "idx": 2,
+      "port": 8082,
+      "cores": "232-235",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419603
+    },
+    {
+      "idx": 3,
+      "port": 8083,
+      "cores": "236-239",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419648
+    },
+    {
+      "idx": 4,
+      "port": 8084,
+      "cores": "240-243",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419651
+    },
+    {
+      "idx": 5,
+      "port": 8085,
+      "cores": "244-247",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419733
+    },
+    {
+      "idx": 6,
+      "port": 8086,
+      "cores": "248-251",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2419987
+    },
+    {
+      "idx": 7,
+      "port": 8087,
+      "cores": "252-255",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 2420233
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:40:39] [llama31-8b__8x4__llamacpp_zendnn__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9010 stats=9011)...
+backends (8):
+  inst0  192.168.13.21:8080  cores  224-227  weight   4  -> 12.5% of traffic
+  inst1  192.168.13.21:8081  cores  228-231  weight   4  -> 12.5% of traffic
+  inst2  192.168.13.21:8082  cores  232-235  weight   4  -> 12.5% of traffic
+  inst3  192.168.13.21:8083  cores  236-239  weight   4  -> 12.5% of traffic
+  inst4  192.168.13.21:8084  cores  240-243  weight   4  -> 12.5% of traffic
+  inst5  192.168.13.21:8085  cores  244-247  weight   4  -> 12.5% of traffic
+  inst6  192.168.13.21:8086  cores  248-251  weight   4  -> 12.5% of traffic
+  inst7  192.168.13.21:8087  cores  252-255  weight   4  -> 12.5% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3806611) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3806611) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3806611) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3806611) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_zendnn__bf16/lb/haproxy.cfg
+[ALERT]    (3806611) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9010 -- run ./start_haproxy.sh overnight_llama31-8b__8x4__llamacpp_zendnn__bf16 first
+[06:41:11] [llama31-8b__8x4__llamacpp_zendnn__bf16] done, status=OK 
+[2026-09-25 06:41:11] [worker:turin-xcovoid0021-pod-7] job llama31-8b__8x4__llamacpp_zendnn__bf16 DONE
+[2026-09-25 06:41:11] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__2x16__vllm_zentorch__bf16 (mode=multiuser layout=2x16 vllm/zentorch/bf16)
+[06:41:11] [llama31-8b__2x16__vllm_zentorch__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:41:11] [llama31-8b__2x16__vllm_zentorch__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+already staged (dir)
+[06:41:12] [llama31-8b__2x16__vllm_zentorch__bf16] starting resource monitor (before phase)...
+[06:41:33] [llama31-8b__2x16__vllm_zentorch__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__2x16__vllm_zentorch__bf16.conf
+[06:41:33] [llama31-8b__2x16__vllm_zentorch__bf16] starting servers on turin-xcovoid0021-pod-7 (overnight_llama31-8b__2x16__vllm_zentorch__bf16)...
+config          : overnight_llama31-8b__2x16__vllm_zentorch__bf16
+backend         : vllm
+instances       : 2 x 16 cores
+core span       : 224-255   (pod pool: 0-255)
+numa node       : 7
+ports           : 8000-8001
+
+launching inst0: cores 224-239  port 8000  weight 16
+launching inst1: cores 240-255  port 8001  weight 16
+
+waiting up to 900s for all 2 instance(s) to become healthy...
+  inst0 (port 8000, cores 224-239) ready after 115s
+  inst1 (port 8001, cores 240-255) ready after 115s
+{
+  "config_name": "overnight_llama31-8b__2x16__vllm_zentorch__bf16",
+  "backend": "vllm",
+  "host": "192.168.13.21",
+  "pod": "turin-xcovoid0021-pod-7",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 2,
+  "cores_per_instance": 16,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:43:30",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "224-239",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 2423064
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "240-255",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 2423067
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:43:31] [llama31-8b__2x16__vllm_zentorch__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9010 stats=9011)...
+backends (2):
+  inst0  192.168.13.21:8000  cores  224-239  weight  16  -> 50.0% of traffic
+  inst1  192.168.13.21:8001  cores  240-255  weight  16  -> 50.0% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3807103) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3807103) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3807103) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3807103) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg
+[ALERT]    (3807103) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9010 -- run ./start_haproxy.sh overnight_llama31-8b__2x16__vllm_zentorch__bf16 first
+[06:43:55] [llama31-8b__2x16__vllm_zentorch__bf16] done, status=OK 
+[2026-09-25 06:43:56] [worker:turin-xcovoid0021-pod-7] job llama31-8b__2x16__vllm_zentorch__bf16 DONE
+[2026-09-25 06:43:56] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__8x4__vllm_nozentorch__bf16 (mode=multiuser layout=8x4 vllm/nozentorch/bf16)
+[06:43:56] [llama31-8b__8x4__vllm_nozentorch__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:43:56] [llama31-8b__8x4__vllm_nozentorch__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+already staged (dir)
+[06:43:57] [llama31-8b__8x4__vllm_nozentorch__bf16] starting resource monitor (before phase)...
+[06:44:17] [llama31-8b__8x4__vllm_nozentorch__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__8x4__vllm_nozentorch__bf16.conf
+[06:44:17] [llama31-8b__8x4__vllm_nozentorch__bf16] starting servers on turin-xcovoid0021-pod-7 (overnight_llama31-8b__8x4__vllm_nozentorch__bf16)...
+config          : overnight_llama31-8b__8x4__vllm_nozentorch__bf16
+backend         : vllm
+instances       : 8 x 4 cores
+core span       : 224-255   (pod pool: 0-255)
+numa node       : 7
+ports           : 8000-8007
+
+command terminated with exit code 1
+[06:44:39] [llama31-8b__8x4__vllm_nozentorch__bf16] done, status=FAILED note=server failed to become healthy
+[2026-09-25 06:44:39] [worker:turin-xcovoid0021-pod-7] job llama31-8b__8x4__vllm_nozentorch__bf16 FAILED (rc=1)
+[2026-09-25 06:44:39] [worker:turin-xcovoid0021-pod-7] starting job llama31-8b__1x32__llamacpp_zendnn__bf16 (mode=batched layout=1x32 llamacpp/zendnn/bf16)
+[06:44:39] [llama31-8b__1x32__llamacpp_zendnn__bf16] infer pod turin-xcovoid0021-pod-7 -> numa=7 cores=224-255
+[06:44:39] [llama31-8b__1x32__llamacpp_zendnn__bf16] staging model on turin-xcovoid0021-pod-7 (skip if already present)...
+already staged
+[06:44:39] [llama31-8b__1x32__llamacpp_zendnn__bf16] starting resource monitor (before phase)...
+[06:44:59] [llama31-8b__1x32__llamacpp_zendnn__bf16] running offline batched-bench (llamacpp/zendnn)...

@@ -1,0 +1,31 @@
+{
+  "backend": "vllm",
+  "url": "http://192.168.13.20:8000",
+  "model": "llama31-8b",
+  "pp": 256,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.41922590509057045,
+      "ttft_s": 0.4191924789920449,
+      "prompt_tokens": 256,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.4192469040863216,
+      "ttft_s": 0.4192018520552665,
+      "prompt_tokens": 256,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.43136815587058663,
+      "ttft_s": 0.4313353409525007,
+      "prompt_tokens": 256,
+      "completion_tokens": 1
+    }
+  ],
+  "mean_ttft_s": 0.42324322399993736,
+  "tok_s": 604.8531564914974
+}

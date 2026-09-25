@@ -1,0 +1,47 @@
+{
+  "config_name": "overnight_llama31-8b__4x8__vllm_nozentorch__bf16",
+  "backend": "vllm",
+  "host": "192.168.6.11",
+  "pod": "turin-xcovoid0023-pod-4",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 4,
+  "cores_per_instance": 8,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:43:15",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "128-135",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 34930
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "136-143",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 34933
+    },
+    {
+      "idx": 2,
+      "port": 8002,
+      "cores": "144-151",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 34936
+    },
+    {
+      "idx": 3,
+      "port": 8003,
+      "cores": "152-159",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 34939
+    }
+  ]
+}

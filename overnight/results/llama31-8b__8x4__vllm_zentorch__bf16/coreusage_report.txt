@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/proj/rdi/staff/sacsharm/online_bench/overnight/analyze_resources.py", line 84, in <module>
+    main(sys.argv[1], sys.argv[2])
+  File "/proj/rdi/staff/sacsharm/online_bench/overnight/analyze_resources.py", line 32, in main
+    manifest = json.load(open(manifest_path))
+FileNotFoundError: [Errno 2] No such file or directory: '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__vllm_zentorch__bf16/manifest.json'

@@ -1,0 +1,3 @@
+ERROR: ld.so: object '/usr/lib/x86_64-linux-gnu/libomp.so.5' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object '/usr/lib/x86_64-linux-gnu/libomp.so.5' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0.00.380.035 W llama_context: n_ctx is not divisible by n_seq_max - rounding down to 73728

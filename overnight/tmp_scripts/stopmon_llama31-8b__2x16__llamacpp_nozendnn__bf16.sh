@@ -1,0 +1,1 @@
+pkill -u $(id -u) -f 'monitor_resources[.]sh.*llama31-8b__2x16__llamacpp_nozendnn__bf16' 2>/dev/null; pkill -u $(id -u) -f "/proj/rdi/staff/sacsharm/online_bench/overnight/results/llama31-8b__2x16__llamacpp_nozendnn__bf16/resource_usage.csv" 2>/dev/null; true

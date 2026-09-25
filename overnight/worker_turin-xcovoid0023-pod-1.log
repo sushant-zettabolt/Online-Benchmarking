@@ -1,0 +1,1097 @@
+[2026-09-25 06:36:08] [worker:turin-xcovoid0023-pod-1] worker starting, slot=2, control_pod=turin-xcovoid0021-pod-5
+[2026-09-25 06:36:09] [worker:turin-xcovoid0023-pod-1] starting job llama31-8b__2x16__vllm_zentorch__bf16 (mode=multiuser layout=2x16 vllm/zentorch/bf16)
+[06:36:09] [llama31-8b__2x16__vllm_zentorch__bf16] infer pod turin-xcovoid0023-pod-1 -> numa=1 cores=32-63
+[06:36:09] [llama31-8b__2x16__vllm_zentorch__bf16] staging model on turin-xcovoid0023-pod-1 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/hf/Llama-3.1-8B-Instruct -> /tmp/models/Llama-3.1-8B-Instruct
+[06:38:25] [llama31-8b__2x16__vllm_zentorch__bf16] starting resource monitor (before phase)...
+[06:38:46] [llama31-8b__2x16__vllm_zentorch__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__2x16__vllm_zentorch__bf16.conf
+[06:38:46] [llama31-8b__2x16__vllm_zentorch__bf16] starting servers on turin-xcovoid0023-pod-1 (overnight_llama31-8b__2x16__vllm_zentorch__bf16)...
+config          : overnight_llama31-8b__2x16__vllm_zentorch__bf16
+backend         : vllm
+instances       : 2 x 16 cores
+core span       : 32-63   (pod pool: 0-255)
+numa node       : 1
+ports           : 8000-8001
+
+launching inst0: cores 32-47  port 8000  weight 16
+launching inst1: cores 48-63  port 8001  weight 16
+
+waiting up to 900s for all 2 instance(s) to become healthy...
+  inst0 (port 8000, cores 32-47) ready after 224s
+  inst1 (port 8001, cores 48-63) ready after 224s
+{
+  "config_name": "overnight_llama31-8b__2x16__vllm_zentorch__bf16",
+  "backend": "vllm",
+  "host": "192.168.6.8",
+  "pod": "turin-xcovoid0023-pod-1",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 2,
+  "cores_per_instance": 16,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:42:30",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "32-47",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 28246
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "48-63",
+      "ncores": 16,
+      "weight": 16,
+      "pid": 28249
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:42:30] [llama31-8b__2x16__vllm_zentorch__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9020 stats=9021)...
+backends (2):
+  inst0  192.168.6.8:8000  cores    32-47  weight  16  -> 50.0% of traffic
+  inst1  192.168.6.8:8001  cores    48-63  weight  16  -> 50.0% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3806885) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3806885) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3806885) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3806885) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__2x16__vllm_zentorch__bf16/lb/haproxy.cfg
+[ALERT]    (3806885) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9020 -- run ./start_haproxy.sh overnight_llama31-8b__2x16__vllm_zentorch__bf16 first
+[06:42:53] [llama31-8b__2x16__vllm_zentorch__bf16] done, status=OK 
+[2026-09-25 06:42:53] [worker:turin-xcovoid0023-pod-1] job llama31-8b__2x16__vllm_zentorch__bf16 DONE
+[2026-09-25 06:42:53] [worker:turin-xcovoid0023-pod-1] starting job llama31-8b__8x4__llamacpp_nozendnn__bf16 (mode=multiuser layout=8x4 llamacpp/nozendnn/bf16)
+[06:42:54] [llama31-8b__8x4__llamacpp_nozendnn__bf16] infer pod turin-xcovoid0023-pod-1 -> numa=1 cores=32-63
+[06:42:54] [llama31-8b__8x4__llamacpp_nozendnn__bf16] staging model on turin-xcovoid0023-pod-1 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/gguf/Llama-3.1-8B-Instruct-BF16.gguf -> /tmp/models/Llama-3.1-8B-Instruct-BF16.gguf
+[06:42:57] [llama31-8b__8x4__llamacpp_nozendnn__bf16] starting resource monitor (before phase)...
+[06:43:17] [llama31-8b__8x4__llamacpp_nozendnn__bf16] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16.conf
+[06:43:17] [llama31-8b__8x4__llamacpp_nozendnn__bf16] starting servers on turin-xcovoid0023-pod-1 (overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16)...
+config          : overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16
+backend         : llamacpp
+instances       : 8 x 4 cores
+core span       : 32-63   (pod pool: 0-255)
+numa node       : 1
+ports           : 8080-8087
+
+launching inst0: cores 32-35  port 8080  weight 4
+launching inst1: cores 36-39  port 8081  weight 4
+launching inst2: cores 40-43  port 8082  weight 4
+launching inst3: cores 44-47  port 8083  weight 4
+launching inst4: cores 48-51  port 8084  weight 4
+launching inst5: cores 52-55  port 8085  weight 4
+launching inst6: cores 56-59  port 8086  weight 4
+launching inst7: cores 60-63  port 8087  weight 4
+
+waiting up to 900s for all 8 instance(s) to become healthy...
+  inst0 (port 8080, cores 32-35) ready after 7s
+  inst1 (port 8081, cores 36-39) ready after 7s
+  inst2 (port 8082, cores 40-43) ready after 7s
+  inst3 (port 8083, cores 44-47) ready after 7s
+  inst4 (port 8084, cores 48-51) ready after 7s
+  inst5 (port 8085, cores 52-55) ready after 7s
+  inst6 (port 8086, cores 56-59) ready after 7s
+  inst7 (port 8087, cores 60-63) ready after 7s
+{
+  "config_name": "overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16",
+  "backend": "llamacpp",
+  "host": "192.168.6.8",
+  "pod": "turin-xcovoid0023-pod-1",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 8,
+  "cores_per_instance": 4,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:43:24",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "32-35",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34949
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "36-39",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34952
+    },
+    {
+      "idx": 2,
+      "port": 8082,
+      "cores": "40-43",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34955
+    },
+    {
+      "idx": 3,
+      "port": 8083,
+      "cores": "44-47",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34958
+    },
+    {
+      "idx": 4,
+      "port": 8084,
+      "cores": "48-51",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34961
+    },
+    {
+      "idx": 5,
+      "port": 8085,
+      "cores": "52-55",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 35016
+    },
+    {
+      "idx": 6,
+      "port": 8086,
+      "cores": "56-59",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 35762
+    },
+    {
+      "idx": 7,
+      "port": 8087,
+      "cores": "60-63",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 36009
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:43:24] [llama31-8b__8x4__llamacpp_nozendnn__bf16] running multiuser sweep via control pod turin-xcovoid0021-pod-5 (fe=9020 stats=9021)...
+backends (8):
+  inst0  192.168.6.8:8080  cores    32-35  weight   4  -> 12.5% of traffic
+  inst1  192.168.6.8:8081  cores    36-39  weight   4  -> 12.5% of traffic
+  inst2  192.168.6.8:8082  cores    40-43  weight   4  -> 12.5% of traffic
+  inst3  192.168.6.8:8083  cores    44-47  weight   4  -> 12.5% of traffic
+  inst4  192.168.6.8:8084  cores    48-51  weight   4  -> 12.5% of traffic
+  inst5  192.168.6.8:8085  cores    52-55  weight   4  -> 12.5% of traffic
+  inst6  192.168.6.8:8086  cores    56-59  weight   4  -> 12.5% of traffic
+  inst7  192.168.6.8:8087  cores    60-63  weight   4  -> 12.5% of traffic
+haproxy config check FAILED:
+[NOTICE]   (3807044) : haproxy version is 2.8.16-0ubuntu0.24.04.3
+[NOTICE]   (3807044) : path to executable is /usr/sbin/haproxy
+[ALERT]    (3807044) : config : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16/lb/haproxy.cfg:7] : parsing [/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16/lb/haproxy.cfg:7] : 'stats socket' : socket path '/proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16/lb/haproxy.sock' too long (max 97)
+
+[ALERT]    (3807044) : config : Error(s) found in configuration file : /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16/lb/haproxy.cfg
+[ALERT]    (3807044) : config : Fatal errors found in configuration.
+nothing listening on 127.0.0.1:9020 -- run ./start_haproxy.sh overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16 first
+[06:43:58] [llama31-8b__8x4__llamacpp_nozendnn__bf16] done, status=OK 
+[2026-09-25 06:43:58] [worker:turin-xcovoid0023-pod-1] job llama31-8b__8x4__llamacpp_nozendnn__bf16 DONE
+[2026-09-25 06:43:58] [worker:turin-xcovoid0023-pod-1] starting job llama31-8b__1x32__llamacpp_zendnn__q8 (mode=ppsweep layout=1x32 llamacpp/zendnn/q8)
+[06:43:58] [llama31-8b__1x32__llamacpp_zendnn__q8] infer pod turin-xcovoid0023-pod-1 -> numa=1 cores=32-63
+[06:43:58] [llama31-8b__1x32__llamacpp_zendnn__q8] staging model on turin-xcovoid0023-pod-1 (skip if already present)...
+staging /proj/rdi/staff/sacsharm/models/gguf/Llama-3.1-8B-Instruct-Q8_0.gguf -> /tmp/models/Llama-3.1-8B-Instruct-Q8_0.gguf
+[06:44:21] [llama31-8b__1x32__llamacpp_zendnn__q8] starting resource monitor (before phase)...
+[06:44:42] [llama31-8b__1x32__llamacpp_zendnn__q8] generated config /proj/rdi/staff/sacsharm/online_bench/multiuser/configs/overnight_llama31-8b__1x32__llamacpp_zendnn__q8.conf
+[06:44:42] [llama31-8b__1x32__llamacpp_zendnn__q8] starting servers on turin-xcovoid0023-pod-1 (overnight_llama31-8b__1x32__llamacpp_zendnn__q8)...
+config          : overnight_llama31-8b__1x32__llamacpp_zendnn__q8
+backend         : llamacpp
+instances       : 1 x 32 cores
+core span       : 32-63   (pod pool: 0-255)
+numa node       : 1
+ports           : 8080-8080
+
+launching inst0: cores 32-63  port 8080  weight 32
+
+waiting up to 900s for all 1 instance(s) to become healthy...
+  inst0 (port 8080, cores 32-63) ready after 3s
+{
+  "config_name": "overnight_llama31-8b__1x32__llamacpp_zendnn__q8",
+  "backend": "llamacpp",
+  "host": "192.168.6.8",
+  "pod": "turin-xcovoid0023-pod-1",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-Q8_0.gguf",
+  "served_model_name": "",
+  "instances_n": 1,
+  "cores_per_instance": 32,
+  "parallel_slots": 1,
+  "slot_ctx": 8192,
+  "started_at": "2026-09-25T12:44:45",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "32-63",
+      "ncores": 32,
+      "weight": 32,
+      "pid": 38631
+    }
+  ]
+}
+
+all instances healthy. manifest: /proj/rdi/staff/sacsharm/online_bench/multiuser/run/overnight_llama31-8b__1x32__llamacpp_zendnn__q8/manifest.json
+launcher exiting now -- servers are detached (setsid); this script holds no cores.
+[06:44:45] [llama31-8b__1x32__llamacpp_zendnn__q8] running pp-sweep gap-fill via control pod turin-xcovoid0021-pod-5...
+[warmup 1/1] pp=1 tg=1
+[measure 1/3] pp=1 tg=1
+[measure 2/3] pp=1 tg=1
+[measure 3/3] pp=1 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 1,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.06440696190111339,
+      "prompt_n": 1,
+      "prompt_ms": 63.551,
+      "prompt_per_second": 15.735393620871426,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.063551
+    },
+    {
+      "client_wall_s": 0.06410648813471198,
+      "prompt_n": 1,
+      "prompt_ms": 63.227,
+      "prompt_per_second": 15.816027962737438,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.06322699999999999
+    },
+    {
+      "client_wall_s": 0.06398201617412269,
+      "prompt_n": 1,
+      "prompt_ms": 63.114,
+      "prompt_per_second": 15.84434515321482,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.063114
+    }
+  ],
+  "mean_ttft_s": 0.06329733333333333,
+  "tok_s": 15.798453857982432
+}
+[warmup 1/1] pp=2 tg=1
+[measure 1/3] pp=2 tg=1
+[measure 2/3] pp=2 tg=1
+[measure 3/3] pp=2 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 2,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.06947548710741103,
+      "prompt_n": 2,
+      "prompt_ms": 68.654,
+      "prompt_per_second": 29.131587380196347,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.06865399999999999
+    },
+    {
+      "client_wall_s": 0.09383980114944279,
+      "prompt_n": 2,
+      "prompt_ms": 92.757,
+      "prompt_per_second": 21.561715018812595,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.092757
+    },
+    {
+      "client_wall_s": 0.0699096960015595,
+      "prompt_n": 2,
+      "prompt_ms": 69.024,
+      "prompt_per_second": 28.975428836346776,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.069024
+    }
+  ],
+  "mean_ttft_s": 0.07681166666666667,
+  "tok_s": 26.037711285178034
+}
+[warmup 1/1] pp=3 tg=1
+[measure 1/3] pp=3 tg=1
+[measure 2/3] pp=3 tg=1
+[measure 3/3] pp=3 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 3,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.07189803081564605,
+      "prompt_n": 3,
+      "prompt_ms": 71.055,
+      "prompt_per_second": 42.22081486172683,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.07105500000000001
+    },
+    {
+      "client_wall_s": 0.0721923871897161,
+      "prompt_n": 3,
+      "prompt_ms": 71.296,
+      "prompt_per_second": 42.078096947935364,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.07129600000000001
+    },
+    {
+      "client_wall_s": 0.07173547591082752,
+      "prompt_n": 3,
+      "prompt_ms": 70.905,
+      "prompt_per_second": 42.31013327691982,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.070905
+    }
+  ],
+  "mean_ttft_s": 0.07108533333333333,
+  "tok_s": 42.20279851446149
+}
+[warmup 1/1] pp=4 tg=1
+[measure 1/3] pp=4 tg=1
+[measure 2/3] pp=4 tg=1
+[measure 3/3] pp=4 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 4,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.07127553201280534,
+      "prompt_n": 4,
+      "prompt_ms": 70.405,
+      "prompt_per_second": 56.81414672253391,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.070405
+    },
+    {
+      "client_wall_s": 0.07122032507322729,
+      "prompt_n": 4,
+      "prompt_ms": 70.303,
+      "prompt_per_second": 56.89657624852425,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.07030299999999999
+    },
+    {
+      "client_wall_s": 0.0710835859645158,
+      "prompt_n": 4,
+      "prompt_ms": 70.221,
+      "prompt_per_second": 56.963016761367676,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.070221
+    }
+  ],
+  "mean_ttft_s": 0.07030966666666666,
+  "tok_s": 56.89118139279095
+}
+[warmup 1/1] pp=8 tg=1
+[measure 1/3] pp=8 tg=1
+[measure 2/3] pp=8 tg=1
+[measure 3/3] pp=8 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 8,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.07306379894725978,
+      "prompt_n": 8,
+      "prompt_ms": 72.143,
+      "prompt_per_second": 110.89086952303064,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.072143
+    },
+    {
+      "client_wall_s": 0.07310562720522285,
+      "prompt_n": 8,
+      "prompt_ms": 72.23,
+      "prompt_per_second": 110.75730305967049,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.07223
+    },
+    {
+      "client_wall_s": 0.07294289208948612,
+      "prompt_n": 8,
+      "prompt_ms": 72.111,
+      "prompt_per_second": 110.94007849010552,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.07211100000000001
+    }
+  ],
+  "mean_ttft_s": 0.07216133333333334,
+  "tok_s": 110.86269655032241
+}
+[warmup 1/1] pp=16 tg=1
+[measure 1/3] pp=16 tg=1
+[measure 2/3] pp=16 tg=1
+[measure 3/3] pp=16 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 16,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.08250320493243635,
+      "prompt_n": 16,
+      "prompt_ms": 81.653,
+      "prompt_per_second": 195.95115917357597,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.081653
+    },
+    {
+      "client_wall_s": 0.10625718696974218,
+      "prompt_n": 16,
+      "prompt_ms": 105.37,
+      "prompt_per_second": 151.84587643541803,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.10537
+    },
+    {
+      "client_wall_s": 0.08446889813058078,
+      "prompt_n": 16,
+      "prompt_ms": 83.577,
+      "prompt_per_second": 191.44022877107338,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.083577
+    }
+  ],
+  "mean_ttft_s": 0.0902,
+  "tok_s": 177.38359201773835
+}
+[warmup 1/1] pp=32 tg=1
+[measure 1/3] pp=32 tg=1
+[measure 2/3] pp=32 tg=1
+[measure 3/3] pp=32 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 32,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.12884192285127938,
+      "prompt_n": 32,
+      "prompt_ms": 127.964,
+      "prompt_per_second": 250.07033228095403,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.127964
+    },
+    {
+      "client_wall_s": 0.12889407598413527,
+      "prompt_n": 32,
+      "prompt_ms": 127.99,
+      "prompt_per_second": 250.01953277599813,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.12799
+    },
+    {
+      "client_wall_s": 0.12842891411855817,
+      "prompt_n": 32,
+      "prompt_ms": 127.574,
+      "prompt_per_second": 250.83480960070233,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.127574
+    }
+  ],
+  "mean_ttft_s": 0.12784266666666666,
+  "tok_s": 250.3076698441835
+}
+[warmup 1/1] pp=48 tg=1
+[measure 1/3] pp=48 tg=1
+[measure 2/3] pp=48 tg=1
+[measure 3/3] pp=48 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 48,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.18439951399341226,
+      "prompt_n": 48,
+      "prompt_ms": 183.431,
+      "prompt_per_second": 261.67877839623617,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.183431
+    },
+    {
+      "client_wall_s": 0.18414796702563763,
+      "prompt_n": 48,
+      "prompt_ms": 183.128,
+      "prompt_per_second": 262.1117469747936,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.18312799999999999
+    },
+    {
+      "client_wall_s": 0.18522633495740592,
+      "prompt_n": 48,
+      "prompt_ms": 184.275,
+      "prompt_per_second": 260.4802604802605,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.184275
+    }
+  ],
+  "mean_ttft_s": 0.18361133333333335,
+  "tok_s": 261.42177135035234
+}
+[warmup 1/1] pp=64 tg=1
+[measure 1/3] pp=64 tg=1
+[measure 2/3] pp=64 tg=1
+[measure 3/3] pp=64 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 64,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.24141165101900697,
+      "prompt_n": 64,
+      "prompt_ms": 240.557,
+      "prompt_per_second": 266.0492107899583,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.240557
+    },
+    {
+      "client_wall_s": 0.2668185729999095,
+      "prompt_n": 64,
+      "prompt_ms": 265.793,
+      "prompt_per_second": 240.78888458311542,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.265793
+    },
+    {
+      "client_wall_s": 0.2402562170755118,
+      "prompt_n": 64,
+      "prompt_ms": 239.262,
+      "prompt_per_second": 267.48919594419505,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.239262
+    }
+  ],
+  "mean_ttft_s": 0.2485373333333333,
+  "tok_s": 257.5065851944443
+}
+[warmup 1/1] pp=96 tg=1
+[measure 1/3] pp=96 tg=1
+[measure 2/3] pp=96 tg=1
+[measure 3/3] pp=96 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 96,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.3480546399950981,
+      "prompt_n": 96,
+      "prompt_ms": 347.024,
+      "prompt_per_second": 276.6379270597999,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.347024
+    },
+    {
+      "client_wall_s": 0.3470522069837898,
+      "prompt_n": 96,
+      "prompt_ms": 346.123,
+      "prompt_per_second": 277.35804901725686,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.346123
+    },
+    {
+      "client_wall_s": 0.3499081179033965,
+      "prompt_n": 96,
+      "prompt_ms": 348.892,
+      "prompt_per_second": 275.156782041434,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.348892
+    }
+  ],
+  "mean_ttft_s": 0.3473463333333333,
+  "tok_s": 276.38121030019033
+}
+[warmup 1/1] pp=128 tg=1
+[measure 1/3] pp=128 tg=1
+[measure 2/3] pp=128 tg=1
+[measure 3/3] pp=128 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 128,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.451229803962633,
+      "prompt_n": 128,
+      "prompt_ms": 450.127,
+      "prompt_per_second": 284.3641905506668,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.450127
+    },
+    {
+      "client_wall_s": 0.4545094701461494,
+      "prompt_n": 128,
+      "prompt_ms": 453.456,
+      "prompt_per_second": 282.2765604601108,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.453456
+    },
+    {
+      "client_wall_s": 0.4583038059063256,
+      "prompt_n": 128,
+      "prompt_ms": 457.264,
+      "prompt_per_second": 279.92581965779067,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.457264
+    }
+  ],
+  "mean_ttft_s": 0.4536156666666667,
+  "tok_s": 282.1772028743863
+}
+[warmup 1/1] pp=256 tg=1
+[measure 1/3] pp=256 tg=1
+[measure 2/3] pp=256 tg=1
+[measure 3/3] pp=256 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 256,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.3794864369556308,
+      "prompt_n": 256,
+      "prompt_ms": 378.31,
+      "prompt_per_second": 676.6937167931062,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.37831
+    },
+    {
+      "client_wall_s": 0.3485341321211308,
+      "prompt_n": 256,
+      "prompt_ms": 347.403,
+      "prompt_per_second": 736.896342288351,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.347403
+    },
+    {
+      "client_wall_s": 0.349333134945482,
+      "prompt_n": 256,
+      "prompt_ms": 348.257,
+      "prompt_per_second": 735.0893162233638,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.348257
+    }
+  ],
+  "mean_ttft_s": 0.35799000000000003,
+  "tok_s": 715.1037738484315
+}
+[warmup 1/1] pp=384 tg=1
+[measure 1/3] pp=384 tg=1
+[measure 2/3] pp=384 tg=1
+[measure 3/3] pp=384 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 384,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.5369903140235692,
+      "prompt_n": 384,
+      "prompt_ms": 535.906,
+      "prompt_per_second": 716.5435729400306,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.535906
+    },
+    {
+      "client_wall_s": 0.49964822200126946,
+      "prompt_n": 384,
+      "prompt_ms": 498.316,
+      "prompt_per_second": 770.5953651899597,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.498316
+    },
+    {
+      "client_wall_s": 0.5055443879682571,
+      "prompt_n": 384,
+      "prompt_ms": 504.304,
+      "prompt_per_second": 761.4454773311337,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.504304
+    }
+  ],
+  "mean_ttft_s": 0.512842,
+  "tok_s": 748.7686265945457
+}
+[warmup 1/1] pp=512 tg=1
+[measure 1/3] pp=512 tg=1
+[measure 2/3] pp=512 tg=1
+[measure 3/3] pp=512 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 512,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.6881039231084287,
+      "prompt_n": 512,
+      "prompt_ms": 686.821,
+      "prompt_per_second": 745.4635196070009,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.686821
+    },
+    {
+      "client_wall_s": 0.6682130440603942,
+      "prompt_n": 512,
+      "prompt_ms": 666.913,
+      "prompt_per_second": 767.7163288165023,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.666913
+    },
+    {
+      "client_wall_s": 0.6730597119312733,
+      "prompt_n": 512,
+      "prompt_ms": 671.636,
+      "prompt_per_second": 762.3176839835863,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.671636
+    }
+  ],
+  "mean_ttft_s": 0.6751233333333334,
+  "tok_s": 758.379950330063
+}
+[warmup 1/1] pp=768 tg=1
+[measure 1/3] pp=768 tg=1
+[measure 2/3] pp=768 tg=1
+[measure 3/3] pp=768 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 768,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 1.0497141000814736,
+      "prompt_n": 768,
+      "prompt_ms": 1048.096,
+      "prompt_per_second": 732.757304674381,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.048096
+    },
+    {
+      "client_wall_s": 1.069000125862658,
+      "prompt_n": 768,
+      "prompt_ms": 1067.331,
+      "prompt_per_second": 719.5518541108617,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.0673309999999998
+    },
+    {
+      "client_wall_s": 1.0348496770020574,
+      "prompt_n": 768,
+      "prompt_ms": 1033.36,
+      "prompt_per_second": 743.2066269257568,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.0333599999999998
+    }
+  ],
+  "mean_ttft_s": 1.0495956666666666,
+  "tok_s": 731.7103379809432
+}
+[warmup 1/1] pp=1024 tg=1
+[measure 1/3] pp=1024 tg=1
+[measure 2/3] pp=1024 tg=1
+[measure 3/3] pp=1024 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 1024,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 1.3909040470607579,
+      "prompt_n": 1024,
+      "prompt_ms": 1389.218,
+      "prompt_per_second": 737.1053355196952,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.389218
+    },
+    {
+      "client_wall_s": 1.3832428550813347,
+      "prompt_n": 1024,
+      "prompt_ms": 1381.613,
+      "prompt_per_second": 741.1626844854528,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.381613
+    },
+    {
+      "client_wall_s": 1.3537628820631653,
+      "prompt_n": 1024,
+      "prompt_ms": 1352.226,
+      "prompt_per_second": 757.2698646528021,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 1.3522260000000002
+    }
+  ],
+  "mean_ttft_s": 1.3743523333333334,
+  "tok_s": 745.0782271503887
+}
+[warmup 1/1] pp=1536 tg=1
+[measure 1/3] pp=1536 tg=1
+[measure 2/3] pp=1536 tg=1
+[measure 3/3] pp=1536 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 1536,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 2.661351482151076,
+      "prompt_n": 1536,
+      "prompt_ms": 2659.31,
+      "prompt_per_second": 577.593435891265,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 2.65931
+    },
+    {
+      "client_wall_s": 2.636771301040426,
+      "prompt_n": 1536,
+      "prompt_ms": 2634.625,
+      "prompt_per_second": 583.0051715139725,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 2.634625
+    },
+    {
+      "client_wall_s": 2.6353097651153803,
+      "prompt_n": 1536,
+      "prompt_ms": 2633.197,
+      "prompt_per_second": 583.3213390414769,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 2.633197
+    }
+  ],
+  "mean_ttft_s": 2.6423773333333336,
+  "tok_s": 581.2947229843024
+}
+[warmup 1/1] pp=2048 tg=1
+[measure 1/3] pp=2048 tg=1
+[measure 2/3] pp=2048 tg=1
+[measure 3/3] pp=2048 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.6.8:8080",
+  "model": "default",
+  "pp": 2048,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 3.6715119779109955,
+      "prompt_n": 2048,
+      "prompt_ms": 3669.283,
+      "prompt_per_second": 558.1471911542392,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 3.669283
+    },
+    {
+      "client_wall_s": 3.6708855009637773,
+      "prompt_n": 2048,
+      "prompt_ms": 3668.64,
+      "prompt_per_second": 558.2450172270924,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 3.66864
+    },
+    {
+      "client_wall_s": 3.648898062063381,
+      "prompt_n": 2048,
+      "prompt_ms": 3646.551,
+      "prompt_per_second": 561.6265890700555,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 3.646551
+    }
+  ],
+  "mean_ttft_s": 3.6614913333333337,
+  "tok_s": 559.3349303753643
+}
+[warmup 1/1] pp=3072 tg=1
+[measure 1/3] pp=3072 tg=1
+[measure 2/3] pp=3072 tg=1

@@ -1,0 +1,65 @@
+29 samples over 32-63 (32 cores), phases: before=9, during=10, after=10
+
+-- inst0 cores 32-35 (during phase only) --
+core	mean%	min%	max%
+32	27.2	1.5	100.0
+33	34.5	0.0	100.0
+34	34.5	0.0	100.0
+35	34.5	0.0	100.0
+
+-- inst1 cores 36-39 (during phase only) --
+core	mean%	min%	max%
+36	24.6	0.0	100.0
+37	40.2	0.0	100.0
+38	40.2	0.0	100.0
+39	40.2	0.0	100.0
+
+-- inst2 cores 40-43 (during phase only) --
+core	mean%	min%	max%
+40	21.4	0.0	100.0
+41	45.0	0.0	100.0
+42	45.0	0.0	100.0
+43	45.0	0.0	100.0
+
+-- inst3 cores 44-47 (during phase only) --
+core	mean%	min%	max%
+44	21.5	0.0	100.0
+45	50.0	0.0	100.0
+46	50.0	0.0	100.0
+47	50.0	0.0	100.0
+
+-- inst4 cores 48-51 (during phase only) --
+core	mean%	min%	max%
+48	25.7	0.0	100.0
+49	54.7	0.0	100.0
+50	54.7	0.0	100.0
+51	54.7	0.0	100.0
+
+-- inst5 cores 52-55 (during phase only) --
+core	mean%	min%	max%
+52	25.1	0.0	100.0
+53	59.8	0.0	100.0
+54	59.8	0.0	100.0
+55	59.8	0.0	100.0
+
+-- inst6 cores 56-59 (during phase only) --
+core	mean%	min%	max%
+56	21.5	0.0	100.0
+57	64.5	0.0	100.0
+58	64.5	0.0	100.0
+59	64.5	0.0	100.0
+
+-- inst7 cores 60-63 (during phase only) --
+core	mean%	min%	max%
+60	21.5	0.0	100.0
+61	69.5	0.0	100.0
+62	69.5	0.0	100.0
+63	69.5	0.0	100.0
+
+-- RAM by phase --
+phase	n	mem_used_mb(mean)	proc_rss_mb(mean)	proc_rss_mb(max)
+before	9	377293	0	0
+during	10	396614	1952	19524
+after	10	325108	0	0
+
+OK: every pinned core shows >=5% mean utilization during the active phase -- no single-core collapse.

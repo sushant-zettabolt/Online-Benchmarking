@@ -1,0 +1,79 @@
+{
+  "config_name": "overnight_llama31-8b__8x4__llamacpp_nozendnn__bf16",
+  "backend": "llamacpp",
+  "host": "192.168.6.8",
+  "pod": "turin-xcovoid0023-pod-1",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 8,
+  "cores_per_instance": 4,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T12:43:24",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "32-35",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34949
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "36-39",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34952
+    },
+    {
+      "idx": 2,
+      "port": 8082,
+      "cores": "40-43",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34955
+    },
+    {
+      "idx": 3,
+      "port": 8083,
+      "cores": "44-47",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34958
+    },
+    {
+      "idx": 4,
+      "port": 8084,
+      "cores": "48-51",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 34961
+    },
+    {
+      "idx": 5,
+      "port": 8085,
+      "cores": "52-55",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 35016
+    },
+    {
+      "idx": 6,
+      "port": 8086,
+      "cores": "56-59",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 35762
+    },
+    {
+      "idx": 7,
+      "port": 8087,
+      "cores": "60-63",
+      "ncores": 4,
+      "weight": 4,
+      "pid": 36009
+    }
+  ]
+}
