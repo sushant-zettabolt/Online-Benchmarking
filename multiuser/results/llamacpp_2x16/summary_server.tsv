@@ -1,0 +1,6 @@
+users	source	n	queue_ms	prefill_ms	decode_s	ttft_ms	tpot_ms	itl_ms
+2	llamacpp:timings	17	1.7	2783.3	29.17	-	229.7	229.7
+4	llamacpp:timings	28	195.3	3118.3	34.64	-	272.7	272.7
+8	llamacpp:timings	41	218.0	3395.8	42.84	-	337.3	337.3
+12	llamacpp:timings	47	216.4	3336.3	55.66	-	438.2	438.2
+16	llamacpp:timings	49	536.4	3650.3	71.40	-	562.2	562.2

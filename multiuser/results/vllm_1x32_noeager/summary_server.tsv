@@ -1,0 +1,6 @@
+users	source	n	queue_ms	prefill_ms	decode_s	ttft_ms	tpot_ms	itl_ms
+2	vllm:prometheus	10	0.0	1656.3	17.35	1698.7	136.6	136.6
+4	vllm:prometheus	20	0.0	1420.5	18.81	1724.9	148.1	148.1
+8	vllm:prometheus	40	0.0	1743.7	22.33	2241.6	175.9	175.9
+12	vllm:prometheus	60	0.0	2170.7	25.37	2810.3	199.8	199.8
+16	vllm:prometheus	76	0.0	2236.4	29.27	2844.2	230.5	228.3

@@ -1,0 +1,31 @@
+{
+  "backend": "vllm",
+  "url": "http://192.168.7.40:8000",
+  "model": "/proj/rdi/staff/sacsharm/models/hf/Llama-3.1-8B-Instruct",
+  "pp": 48,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.19299458083696663,
+      "ttft_s": 0.19295939290896058,
+      "prompt_tokens": 48,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.19372869422659278,
+      "ttft_s": 0.19370656413957477,
+      "prompt_tokens": 48,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.19389452296309173,
+      "ttft_s": 0.19387325295247138,
+      "prompt_tokens": 48,
+      "completion_tokens": 1
+    }
+  ],
+  "mean_ttft_s": 0.19351307000033557,
+  "tok_s": 248.04526123179568
+}

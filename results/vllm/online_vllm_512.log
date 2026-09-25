@@ -1,0 +1,35 @@
+[warmup 1/1] pp=512 tg=1
+[measure 1/3] pp=512 tg=1
+[measure 2/3] pp=512 tg=1
+[measure 3/3] pp=512 tg=1
+{
+  "backend": "vllm",
+  "url": "http://192.168.7.40:8000",
+  "model": "/proj/rdi/staff/sacsharm/models/hf/Llama-3.1-8B-Instruct",
+  "pp": 512,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.7460294631309807,
+      "ttft_s": 0.7460009639617056,
+      "prompt_tokens": 512,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.7622399979736656,
+      "ttft_s": 0.7622041180729866,
+      "prompt_tokens": 512,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 0.7434682599268854,
+      "ttft_s": 0.7434356450103223,
+      "prompt_tokens": 512,
+      "completion_tokens": 1
+    }
+  ],
+  "mean_ttft_s": 0.7505469090150049,
+  "tok_s": 682.1692206712747
+}

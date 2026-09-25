@@ -1,0 +1,35 @@
+[warmup 1/1] pp=1536 tg=1
+[measure 1/3] pp=1536 tg=1
+[measure 2/3] pp=1536 tg=1
+[measure 3/3] pp=1536 tg=1
+{
+  "backend": "vllm",
+  "url": "http://192.168.7.60:8000",
+  "model": "llama31-8b-w8a8",
+  "pp": 1536,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 1.4356712909939233,
+      "ttft_s": 1.4356175870052539,
+      "prompt_tokens": 1536,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 1.4670983889955096,
+      "ttft_s": 1.4670439939945936,
+      "prompt_tokens": 1536,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 1.4595702549850103,
+      "ttft_s": 1.4595158599840943,
+      "prompt_tokens": 1536,
+      "completion_tokens": 1
+    }
+  ],
+  "mean_ttft_s": 1.4540591469946473,
+  "tok_s": 1056.3531773619484
+}

@@ -1,0 +1,35 @@
+[warmup 1/1] pp=768 tg=1
+[measure 1/3] pp=768 tg=1
+[measure 2/3] pp=768 tg=1
+[measure 3/3] pp=768 tg=1
+{
+  "backend": "vllm",
+  "url": "http://192.168.7.60:8000",
+  "model": "llama31-8b",
+  "pp": 768,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 1.0491305589966942,
+      "ttft_s": 1.0490746120049153,
+      "prompt_tokens": 768,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 1.0726375879894476,
+      "ttft_s": 1.0725849059817847,
+      "prompt_tokens": 768,
+      "completion_tokens": 1
+    },
+    {
+      "client_wall_s": 1.033507052983623,
+      "ttft_s": 1.033455201977631,
+      "prompt_tokens": 768,
+      "completion_tokens": 1
+    }
+  ],
+  "mean_ttft_s": 1.051704906654777,
+  "tok_s": 730.2428610348745
+}

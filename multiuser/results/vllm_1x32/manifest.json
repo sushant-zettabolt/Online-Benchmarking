@@ -1,0 +1,23 @@
+{
+  "config_name": "vllm_1x32",
+  "backend": "vllm",
+  "host": "192.168.7.60",
+  "pod": "turin-xcovoid0014-pod-6",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 1,
+  "cores_per_instance": 32,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-23T09:02:20",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "192-223",
+      "ncores": 32,
+      "weight": 32,
+      "pid": 115605
+    }
+  ]
+}

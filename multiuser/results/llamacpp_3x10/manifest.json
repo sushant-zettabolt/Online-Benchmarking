@@ -1,0 +1,39 @@
+{
+  "config_name": "llamacpp_3x10",
+  "backend": "llamacpp",
+  "host": "192.168.7.60",
+  "pod": "turin-xcovoid0014-pod-6",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct-BF16.gguf",
+  "served_model_name": "",
+  "instances_n": 3,
+  "cores_per_instance": 10,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-24T08:11:46",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8080,
+      "cores": "192-201",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 243435
+    },
+    {
+      "idx": 1,
+      "port": 8081,
+      "cores": "202-211",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 243438
+    },
+    {
+      "idx": 2,
+      "port": 8082,
+      "cores": "212-221",
+      "ncores": 10,
+      "weight": 10,
+      "pid": 243441
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[warmup 1/1] pp=96 tg=1
+[measure 1/3] pp=96 tg=1
+[measure 2/3] pp=96 tg=1
+[measure 3/3] pp=96 tg=1
+{
+  "backend": "llamacpp",
+  "url": "http://192.168.7.60:8080",
+  "model": "default",
+  "pp": 96,
+  "tg": 1,
+  "num_iters": 3,
+  "warmup_iters": 1,
+  "iters": [
+    {
+      "client_wall_s": 0.37359077399014495,
+      "prompt_n": 96,
+      "prompt_ms": 372.513,
+      "prompt_per_second": 257.70912692979846,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.372513
+    },
+    {
+      "client_wall_s": 0.374246679013595,
+      "prompt_n": 96,
+      "prompt_ms": 373.054,
+      "prompt_per_second": 257.3353991647322,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.373054
+    },
+    {
+      "client_wall_s": 0.3878399450040888,
+      "prompt_n": 96,
+      "prompt_ms": 386.582,
+      "prompt_per_second": 248.33023782793816,
+      "predicted_n": 1,
+      "predicted_ms": 0.001,
+      "predicted_per_second": 0.0,
+      "ttft_s": 0.386582
+    }
+  ],
+  "mean_ttft_s": 0.377383,
+  "tok_s": 254.38347779311732
+}
