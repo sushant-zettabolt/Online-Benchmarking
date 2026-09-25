@@ -29,6 +29,11 @@ pp-sweep tooling in the parent `online_bench/` directory.
     per-token INT8 activations), downloaded from HF Hub
     (`RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w8a8`, not gated) rather
     than quantized locally — see gotcha #5.
+- **This whole tree (`/proj/rdi/staff/sacsharm/online_bench/`) is now a git
+  repo** (branch `main`, remote `origin` = `git@github.com:sushant-zettabolt/
+  Online-Benchmarking.git`, SSH key at `~/.ssh/id_ed25519`,
+  `sushant@zettabolt.com`) — see "Git repo state" section below before
+  assuming anything about what's pushed.
 
 ## CRITICAL gotchas (do not rediscover these the hard way again)
 
@@ -126,6 +131,19 @@ pp-sweep tooling in the parent `online_bench/` directory.
      there's no stale contaminated data sitting in these directories).
    - llama.cpp is NOT affected by any version of this bug — `build_release`
      is a real separately-compiled binary, not a venv/shebang situation.
+   - **Addendum, later session**: don't expect the server startup log
+     (`run/<config>/inst<i>.log`) to settle this either way for future
+     verification — `start_servers.sh` sets `VLLM_LOGGING_LEVEL=WARNING`,
+     and the platform-selection code logs the ZenCpuPlatform choice at
+     `logger.info(...)` and the CpuPlatform fallback at `logger.debug(...)`
+     (`vllm/platforms/__init__.py::cpu_platform_plugin()`) — both below
+     WARNING, so the log is silent either way. `ZenCpuPlatform` itself
+     (`vllm/platforms/zen_cpu.py`) adds no other always-visible log line.
+     The only reliable retroactive check remains the live-process one
+     above (`ps` + `/proc/<pid>/maps`); once a server has stopped, the best
+     you can do after the fact is corroborate via timestamps (e.g. confirm
+     the shebang-fix mtime on `.venv_nozentorch/bin/vllm` predates that
+     server's own startup log timestamp).
 
 ## What's built
 
@@ -209,17 +227,41 @@ for every layout tested.
 | `vllm_2x16_noeager` | 30s | 2/4/8/12/16 | complete |
 | `llamacpp_3x10` | 30s | 2/4/8/12/16 | complete |
 | `vllm_3x10_noeager` | 30s | 2/4/8/12/16 | complete |
-| `llamacpp_4x8` | 30s | 2/4/8/12 complete, **16 truncated** | **incomplete** |
-| `vllm_4x8_noeager` | — | — | **not started** |
+| `llamacpp_4x8` | 30s | 2/4/8/12/16 | complete |
+| `vllm_4x8_noeager` | 30s | 2/4/8/12/16 | complete |
 
-**`llamacpp_4x8` detail**: user asked to pause this sweep mid-run
-("stop the 4x8 sweep for now"); `users_16`'s `samples.jsonl` has only 22
-samples (expected up to ~80 at 30s pacing/300s) — a truncated/killed run, do
-not treat it as a real data point. `users_2/4/8/12` each show sample counts
-consistent with having fully completed their own 300s window before the
-sweep was interrupted (sweep runs user-counts strictly sequentially), so
-those four ARE usable if needed, but `users_16` needs a fresh re-run and
-`vllm_4x8_noeager` was never even started.
+**`llamacpp_4x8`/`vllm_4x8_noeager` were fully re-run from scratch** (the
+earlier truncated `llamacpp_4x8` data described below no longer applies —
+overwritten) **on a different pod pair than the one documented in this
+file's Environment section**: inference pod `turin-xcovoid0021-pod-6`
+(192.168.13.20) instead of the usual `turin-xcovoid0014-pod-6`, because the
+usual pod had another engineer's session on it at the time and the user
+explicitly directed use of `xcovoid0021-pod-6`/`xcovoid0021-pod-5` instead
+(both confirmed unclaimed). `xcovoid0021-pod-6` was verified to have an
+identical core/NUMA layout (192-223, node 6, same isolcpus kernel cmdline)
+to `xcovoid0014-pod-6`, so no config changes were needed — this is recorded
+here as the pod actually used for this data, not a change to the standing
+documented environment (worth considering as a new default pairing later
+since both `xcovoid0021` pods are co-located on the same physical node,
+unlike the usual cross-workspace split — not decided either way yet).
+
+*(Superseded context, kept for history: an earlier attempt on the original
+pod pairing was paused mid-run — `llamacpp_4x8`'s `users_16` truncated at 22
+samples, `vllm_4x8_noeager` never started — then a resume attempt on the
+`xcovoid0021` pod pair was itself killed mid model-staging before any
+servers started. Neither left anything usable; both are superseded by the
+complete re-run above.)*
+
+**4×8 headline**: same pattern as every other completed layout — roughly
+even at 2-4 users (vLLM actually slightly ahead even here: 227 vs 189
+user-stream pp tok/s at 2 users), vLLM pulls clearly ahead from 8 users on
+and scales to 16 users gracefully (cluster total tok/s 206.3, monotonically
+increasing with load, WRR split stays even 25/25/25/25, `itl_p99` tail
+~5.1-5.3s at 12-16 users). llama.cpp's cluster throughput *drops* from 12
+to 16 users (150.3 -> 132.1 cl_tot_tps, served reqs 36 -> 32) — the same
+saturate/degrade-under-load pattern seen at 3×10 — with a much worse
+`itl_p99` tail (~7.1s at 12-16 users) than vLLM's. Core-usage monitor
+confirmed no core collapse for either backend across the full sweep.
 
 **Eager A/B (1×32, 60s pacing)**: non-eager wins at every user count, gap
 widening with load (TPOT 279.8ms eager vs 222.9ms non-eager at 16 users).
@@ -273,8 +315,13 @@ Full tables: `online_bench/results/*/summary.tsv`.
 
 ## Currently live on the pods
 
-**Both pods confirmed clean** (checked immediately before writing this
-handoff) — no servers, no HAProxy, no monitor, no sweep processes anywhere.
+**All pods confirmed clean** (checked immediately before writing this
+handoff) — no servers, no HAProxy, no monitor, no sweep processes anywhere,
+including on `turin-xcovoid0021-pod-6`, which was used as a stand-in
+inference pod for the 4×8 sweep above (see that section) and has since been
+fully torn down. `/tmp/models` on that pod now HAS the staged models (BF16
+GGUF + HF dir, verified byte-identical to the NFS source) if it's reused
+again — no need to re-stage unless the pod restarts.
 
 ## Leftover disk cruft (safe to delete, not cleaned up yet)
 
@@ -287,26 +334,64 @@ handoff) — no servers, no HAProxy, no monitor, no sweep processes anywhere.
 - `.venv_nozentorch` (~3.3G) — kept intentionally, this one IS still needed
   (and now fixed/verified) for any future non-zentorch vLLM run.
 
+## Git repo state
+
+`/proj/rdi/staff/sacsharm/online_bench` is a git repo, branch `main`, remote
+`origin` = `git@github.com:sushant-zettabolt/Online-Benchmarking.git`.
+Commits so far (all local — **see push status below**):
+1. Initial commit — all scripts, all `configs/*.conf`, both READMEs.
+2. `multiuser/COMMANDS.md` added — exact reconstructed env vars + argv for
+   every build variant/config (ZenDNN vs non-ZenDNN llama.cpp, zentorch vs
+   non-zentorch vLLM, fully expanded for the six key single-instance
+   comparisons), exact `sweep_online.sh`/`run_multiuser_sweep.sh`
+   invocations per results dir, build/setup commands. Read this file for
+   "what command produced which result" instead of reverse-engineering
+   `start_servers.sh` yourself.
+3. Raw results committed for the 12 complete experiment dirs at the time
+   (all multi-user configs except `llamacpp_4x8`/`vllm_4x8_noeager`, which
+   were mid-run; all 6 single-request pp-sweep dirs). `.gitignore` still
+   excludes `run/` (logs/manifests/pids — operational, not results) and all
+   `.venv*` dirs.
+
+**`llamacpp_4x8`/`vllm_4x8_noeager` results are NOT yet added to git** — they
+finished after the above commits. `.gitignore` still has explicit exclusion
+lines for these two directories (added as a placeholder) — remove those two
+lines, `git add` the two results dirs plus this file's edits, commit.
+
+**Push status: NOT pushed.** `git commit` and `git push` to this remote are
+both being blocked by the harness's own auto-mode permission classifier,
+reason given: "Data Exfiltration" (treats writing to / pushing to an
+external personal GitHub remote as a red flag, independent of repo
+content). This is not a retryable error — retrying the same command
+produces the same block. To get commits/pushes to actually happen, either
+(a) the user adds a Bash permission rule permitting `git commit`/`git push`
+for this repo, or (b) the user runs the commands themselves outside the
+harness. Everything needed is already in place (SSH key, remote, staged
+files) — only the actual commit/push execution is blocked.
+
 ## Outstanding / not yet done
 
-1. **`llamacpp_4x8` users_16 re-run + `vllm_4x8_noeager` full sweep** — configs
-   exist, cores are free, just needs launching (both backends, 4×8 layout).
-2. **8×4 layout** — `llamacpp_8x4.conf` exists; no `vllm_8x4*.conf` created
+1. ~~`llamacpp_4x8` users_16 re-run + `vllm_4x8_noeager` full sweep~~ — **done**,
+   see the 4×8 headline above.
+2. **Commit + push the `llamacpp_4x8`/`vllm_4x8_noeager` results to git** —
+   blocked by the permission classifier as above, needs the user to do it
+   (or grant permission) outside this harness.
+3. **8×4 layout** — `llamacpp_8x4.conf` exists; no `vllm_8x4*.conf` created
    yet; neither has been benchmarked.
-3. **llama.cpp 12-user reproducibility re-check** (original 60s-pacing 1×32
+4. **llama.cpp 12-user reproducibility re-check** (original 60s-pacing 1×32
    sweep) — still open, see above.
-4. **Busy-only / prefill-only-busy cluster throughput metrics** — discussed
+5. **Busy-only / prefill-only-busy cluster throughput metrics** — discussed
    at length earlier in the project, computed ad-hoc, never wired into
    `consolidate_multiuser.py` as permanent columns. A prior plan to add them
    was explicitly superseded by the user ("we will include gap time in
    cluster numbers, just do this change [pacing], ignore prev instruction")
    — so **this is deliberately not planned work anymore**, not just
    forgotten. Only revisit if explicitly asked again.
-5. **vLLM server-side Prometheus metrics only read instance 0** in
+6. **vLLM server-side Prometheus metrics only read instance 0** in
    `consolidate_multiuser.py::prom_server_side()` — a real latent bug for any
    multi-instance vLLM config's `summary_server.tsv` (silently reports half+
    the cluster as if it were the whole thing). Known, not fixed (was
-   planned once, then explicitly superseded per point 4 above alongside the
+   planned once, then explicitly superseded per point 5 above alongside the
    busy-time metrics work). Fix before trusting `vllm_2x16_noeager`'s or
    `vllm_3x10_noeager`'s server-side table `n` counts.
 

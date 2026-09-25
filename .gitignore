@@ -3,11 +3,6 @@
 # manifests) stays ignored -- operational/ephemeral, not results.
 /multiuser/run/
 
-# In-flight sweep output not yet consolidated -- see HANDOFF.md "Outstanding".
-# Remove these lines once llamacpp_4x8/vllm_4x8_noeager finish and are consolidated.
-/multiuser/results/llamacpp_4x8/
-/multiuser/results/vllm_4x8_noeager/
-
 # Generated venvs
 /multiuser/.venv/
 /multiuser/.venv_*/

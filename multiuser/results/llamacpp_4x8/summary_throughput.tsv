@@ -1,0 +1,6 @@
+users	reqs	fail	mean_conc	req_per_min	cl_pp_tps_wallavg	cl_tg_tps_wallavg	cl_tot_tps_wallavg	user_pp_tps	user_tg_tps	prompt_tok	out_tok
+2	12	0	1.97	2.80	47.8	5.97	53.7	189.0	3.44	1024	128
+4	16	0	3.71	3.49	59.6	7.45	67.0	166.9	2.21	1024	128
+8	22	0	6.25	4.50	76.8	9.60	86.4	150.0	1.74	1024	128
+12	36	0	10.80	7.83	133.6	16.70	150.3	134.6	1.70	1024	128
+16	32	0	13.50	6.88	117.4	14.68	132.1	139.3	1.23	1024	128

@@ -1,0 +1,47 @@
+{
+  "config_name": "vllm_4x8_noeager",
+  "backend": "vllm",
+  "host": "192.168.13.20",
+  "pod": "turin-xcovoid0021-pod-6",
+  "model": "/tmp/models/Llama-3.1-8B-Instruct",
+  "served_model_name": "llama31-8b",
+  "instances_n": 4,
+  "cores_per_instance": 8,
+  "parallel_slots": 16,
+  "slot_ctx": 2048,
+  "started_at": "2026-09-25T07:16:49",
+  "instances": [
+    {
+      "idx": 0,
+      "port": 8000,
+      "cores": "192-199",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2503482
+    },
+    {
+      "idx": 1,
+      "port": 8001,
+      "cores": "200-207",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2503485
+    },
+    {
+      "idx": 2,
+      "port": 8002,
+      "cores": "208-215",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2503488
+    },
+    {
+      "idx": 3,
+      "port": 8003,
+      "cores": "216-223",
+      "ncores": 8,
+      "weight": 8,
+      "pid": 2503491
+    }
+  ]
+}
